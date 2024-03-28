@@ -1,79 +1,55 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const Nav = () => {
-   const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Best Offers", path: "#" },
-  { name: "Services", path: "#" },
-  { name: "Contact Us", path: "#" },
-  
-];
-  let [open, setOpen] = useState(false);
-  
+const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Best Offers", path: "#" },
+    { name: "Services", path: "#" },
+    { name: "Contact Us", path: "#" },
+  ];
+
+const Navbar = () => {
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+
   return (
-    <header className="bg-white top-0 left-0 fixed z-50 w-full">
-  <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-    <div className="flex h-16 items-center justify-between">
-      <div className="md:flex md:items-center md:gap-12">
-        <a className="block text-primary" href="#">
-          <span className="sr-only">Home</span>
-        <Link to="/" className="font-montez font-bold text-[38px]">Mimozo</Link>
-        </a>
-      </div>
+    <div className="fixed top-0 left-0 w-full bg-white z-10 shadow-md">  {/* Tailwind classes for header styling */}
+      <div className="container mx-auto px-4 flex justify-between items-center py-4">
+        <Link to="/" className="text-primary font-montez text-[25px] md:text-[30px] font-bold tracking-wide">
+           Mimozo
+        </Link>
 
-      <div className="hidden md:block">
-        <nav aria-label="Global">
-          <ul className="flex items-center gap-6 text-sm">
-            {navLinks.map((link) => (
-          <li key={link.name}>
-            <Link to={link.path} className="text-primary font-medium text-[15px] transition hover:text-secondary">
-              {link.name}
-            </Link>
-          </li>
-        ))}
-          </ul>
-        </nav>
-      </div>
+        <ul className={`h-[200px] md:h-[50px] z-200 top-0 right-0 bg-opacity-95 bg-blur fixed flex flex-col justify-center items-center text-leading-6 md:static md:flex-row md:space-x-8 ${click ? 'absolute md:static bg-white right-0 top-full w-full md:w-auto md:bg-transparent overflow-y-auto transition duration-300 ease-in-out' : 'hidden md:flex'}`}> {/* Tailwind classes for responsive nav */}
+          {navLinks.map((link) => (
+                <li key={link.name} className="block md:inline-block transition-all duration-300 px-5 py-1 mt-2 mb-2 rounded-lg">
+                  <Link
+                    className="text-primary font-medium transition-all duration-300 hover:text-secondary"
+                    to={link.path}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+        </ul>
 
-      <div className="flex items-center gap-4">
-        <div className="sm:flex sm:gap-4">
-          <a
-            className="rounded-md bg-primary hover:opacity-90 transition-all duration-500 px-5 py-2.5 text-sm font-medium text-white shadow"
-            href="#"
-          >
-            Login
-          </a>
-
-          <div className="hidden sm:flex">
-            <a
-              className="rounded-md bg-gray-400 px-5 py-2.5 text-sm font-medium text-primary"
-              href="#"
-            >
-              Register
-            </a>
-          </div>
+        <div className="flex items-center md:hidden">
+          <button className="text-gray-700 hover:text-primary focus:outline-none" onClick={handleClick}>
+            {click ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
 
-        <div className="block md:hidden">
-          <button className="rounded p-2 text-gray-600 transition hover:text-gray-600/75">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+        <div className="btn-group hidden md:flex">
+          <button className="btn bg-primary text-white py-2 px-4 hover:opacity-90 transition-all duration-300 rounded-md focus:outline-none">
+            Login
+          </button>
+          <button className="btn bg-gray-300 text-primary py-2 px-4 mx-4 hover:opacity-90 transition-all duration-300 rounded-md focus:outline-none">
+            Register
           </button>
         </div>
       </div>
     </div>
-  </div>
-</header>
-  )
-}
+  );
+};
 
-export default Nav
+export default Navbar;
