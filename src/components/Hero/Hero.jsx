@@ -28,14 +28,14 @@ const Hero = () => {
       <div className="mt-8 flex flex-wrap gap-4 text-center">
         <a
           href="#"
-          className="block w-full rounded bg-gray-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-gray-700 focus:outline-none focus:ring active:bg-gray-500 sm:w-auto"
+          className="block w-full rounded transition-all duration-500 bg-gray-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-gray-700 focus:outline-none focus:ring active:bg-gray-500 sm:w-auto"
         >
           Get Started
         </a>
 
         <a
           href="#"
-          className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-gray-600 shadow hover:text-gray-700 focus:outline-none focus:ring active:text-gray-500 sm:w-auto"
+          className="block w-full rounded transition-all duration-500 bg-white px-12 py-3 text-sm font-medium text-gray-600 shadow hover:text-gray-700 focus:outline-none focus:ring active:text-gray-500 sm:w-auto"
         >
           Learn More
         </a>

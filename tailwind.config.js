@@ -7,9 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#233876',
-        secondary: '#3F83F8'
+        primary: '#111827',
+        secondary: '#1a56db'
       },
+      fontFamily: {
+        montez: ['"Montez"', "sans-serif"], 
+      }
     },
   },
   plugins: [],

@@ -1,61 +1,79 @@
-import { useState } from 'react';
-import { X, Menu } from 'lucide-react';
+import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
-  const [nav, setNav] = useState(false);
-
-  const handleNav = () => {
-    setNav(!nav);
-  };
-
-
-  const navItems = [
-    { id: 1, text: 'Home' },
-    { id: 2, text: 'Company' },
-    { id: 3, text: 'Resources' },
-    { id: 4, text: 'About' },
-    { id: 5, text: 'Contact' },
-  ];
-
+const Nav = () => {
+   const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "Best Offers", path: "#" },
+  { name: "Services", path: "#" },
+  { name: "Contact Us", path: "#" },
+  
+];
+  let [open, setOpen] = useState(false);
+  
   return (
-    <header className='bg-black z-[999] flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
-      <h1 className='w-full text-3xl font-bold text-[#00df9a]'>REACT.</h1>
-
-      <ul className='hidden md:flex'>
-        {navItems.map(item => (
-          <li
-            key={item.id}
-            className='p-4 hover:bg-[#00df9a] rounded-xl m-2 cursor-pointer duration-300 hover:text-black'
-          >
-            {item.text}
-          </li>
-        ))}
-      </ul>
-
-      <div onClick={handleNav} className='block md:hidden'>
-        {nav ? <X size={20} /> : <Menu size={20} />}
+    <header className="bg-white top-0 left-0 fixed z-50 w-full">
+  <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div className="flex h-16 items-center justify-between">
+      <div className="md:flex md:items-center md:gap-12">
+        <a className="block text-primary" href="#">
+          <span className="sr-only">Home</span>
+        <Link to="/" className="font-montez font-bold text-[38px]">Mimozo</Link>
+        </a>
       </div>
 
-      <ul
-        className={
-          nav
-            ? 'fixed md:hidden left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500'
-            : 'ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]'
-        }
-      >
-        <h1 className='w-full text-3xl font-bold text-[#00df9a] m-4'>REACT.</h1>
-
-        {navItems.map(item => (
-          <li
-            key={item.id}
-            className='p-4 border-b rounded-xl hover:bg-[#00df9a] duration-300 hover:text-black cursor-pointer border-gray-600'
-          >
-            {item.text}
+      <div className="hidden md:block">
+        <nav aria-label="Global">
+          <ul className="flex items-center gap-6 text-sm">
+            {navLinks.map((link) => (
+          <li key={link.name}>
+            <Link to={link.path} className="text-primary font-medium text-[15px] transition hover:text-secondary">
+              {link.name}
+            </Link>
           </li>
         ))}
-      </ul>
-    </header>
-  );
-};
+          </ul>
+        </nav>
+      </div>
 
-export default Navbar;
+      <div className="flex items-center gap-4">
+        <div className="sm:flex sm:gap-4">
+          <a
+            className="rounded-md bg-primary hover:opacity-90 transition-all duration-500 px-5 py-2.5 text-sm font-medium text-white shadow"
+            href="#"
+          >
+            Login
+          </a>
+
+          <div className="hidden sm:flex">
+            <a
+              className="rounded-md bg-gray-400 px-5 py-2.5 text-sm font-medium text-primary"
+              href="#"
+            >
+              Register
+            </a>
+          </div>
+        </div>
+
+        <div className="block md:hidden">
+          <button className="rounded p-2 text-gray-600 transition hover:text-gray-600/75">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+  )
+}
+
+export default Nav
