@@ -9,7 +9,7 @@ const navLinks = [
     { name: "Contact Us", path: "#" },
   ];
 
-const Navbar = () => {
+const Header = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
@@ -52,4 +52,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;
