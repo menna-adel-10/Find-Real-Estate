@@ -22,13 +22,13 @@ const Header = () => {
            Mimozo
         </Link>
 
-        <ul className={`h-[200px] md:h-[50px] z-200 top-0 right-0 bg-opacity-95 bg-blur fixed flex flex-col justify-center items-center text-leading-6 md:static md:flex-row md:space-x-8 ${click ? 'absolute md:static bg-white right-0 top-full w-full md:w-auto md:bg-transparent overflow-y-auto transition duration-300 ease-in-out' : 'hidden md:flex'}`}>
+        <ul className={`h-[200px] md:h-[50px] z-200 top-0 right-0 bg-opacity-95 bg-blur fixed flex flex-col justify-center items-center text-leading-6 md:static md:flex-row md:space-x-8 ${click ? 'absolute md:static bg-white right-0 top-full w-full md:w-auto md:bg-transparent overflow-y-auto transition duration-300 ease-in-out' : 'hidden lg:flex'}`}>
           {navLinks.map((link) => (
             <li key={link.name} className="block md:inline-block transition-all duration-300 px-5 py-1 mt-2 mb-2 rounded-lg">
               <Link
                 className="text-primary font-medium transition-all duration-300 hover:text-secondary"
                 to={link.path}
-                onClick={closeNavbar} // Close navbar when a navlink is clicked
+                onClick={closeNavbar}
               >
                 {link.name}
               </Link>
