@@ -13,7 +13,7 @@ const Header = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
-  const closeNavbar = () => setClick(false); // Function to close the navbar
+  const closeNavbar = () => setClick(false);
 
   return (
     <div className="fixed top-0 left-0 w-full bg-white z-10 shadow-md">
